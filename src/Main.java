@@ -20,11 +20,11 @@ public class Main {
         if (consumo <= 100){
             bandeira = "Verde";
         }
-        else if (consumo <= 200){
+        else if (consumo > 100 && consumo <= 200){
             bandeira = "Amarela";
             valorFinal = valorFinal + 2;
         }
-        else if (consumo <= 300){
+        else if (consumo > 200 && consumo <= 300){
             bandeira = "Vermelha";
             valorFinal = valorFinal + 5;
         }
