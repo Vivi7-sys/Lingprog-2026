@@ -5,19 +5,20 @@ import java.util.Scanner;
 public class ExemploSwitch {
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
+        System.out.println("Digite 1. Cadastro 2. Consulta 3. Sair")
         int opcao = entrada.nextInt();
         switch (opcao){
             case 1:
-                System.out.println();
+                System.out.println("Cadastro realizado com sucesso");
                 break;
             case 2:
-                System.out.println();
+                System.out.println("Consulta realizado com sucesso");
                 break;
             case 3:
-                System.out.println();
+                System.out.println("Programa será encerrado");
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + opcao);
+                System.out.println("Opção inválida")
         }
     }
 }
