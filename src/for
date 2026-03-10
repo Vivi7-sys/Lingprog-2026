@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class For {
+    public static void main(String[] args){
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Quantas vezes deseja que o dado seja lançado: ");
+        int qtde = entrada.nextInt();
+        //pede ao usuario qual numero ele quer acertar
+        System.out.println("Qual número você quer acertar: ");
+        int numero = entrada.nextInt();
+        int conta = 0; //conta quantas vezes acertou
+        while(numero < 1 || numero > 6){
+            System.out.println("Número deve ser entre 1 e 6 ");
+            numero = entrada.nextInt();
+        }
+        for(int i=1; i <= qtde; i++){
+            int aleatorio = (int) (Math.random() * 6 + 1);
+            System.out.println("Dado lançado: " + aleatorio);
+            if(aleatorio == numero){
+                conta++;
+            }
+        }
+        System.out.println("------------RESULTADO------------");
+        System.out.println("Quantas vezses você acertou: " + conta);
+        System.out.println("Percentual de acerto: " + ((float) conta /qtde) * 100 + "%");
+    }
+}
