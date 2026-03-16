@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class For {
+public class For_Dado {
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Quantas vezes deseja que o dado seja lançado: ");
