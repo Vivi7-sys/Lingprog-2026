@@ -1,11 +1,9 @@
-import com.sun.source.tree.DefaultCaseLabelTree;
-
 import java.util.Scanner;
 
-public class ExemploSwitch {
+public class Switch {
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Digite 1. Cadastro 2. Consulta 3. Sair")
+        System.out.println("Digite 1. Cadastro 2. Consulta 3. Sair");
         int opcao = entrada.nextInt();
         switch (opcao){
             case 1:
@@ -18,7 +16,7 @@ public class ExemploSwitch {
                 System.out.println("Programa será encerrado");
                 break;
             default:
-                System.out.println("Opção inválida")
+                System.out.println("Opção inválida");
         }
     }
 }
