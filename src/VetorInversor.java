@@ -6,7 +6,7 @@ public class VetorInversor{
         Scanner entrada = new Scanner(System.in);
 
         for(int i=0; i<5; i++){
-            System.out.println("Whats your name? ");
+            System.out.println("Digite seu nome: ");
             nomes[i] = entrada.nextLine();
         }
         for(int i=4; i>=0; i--){
