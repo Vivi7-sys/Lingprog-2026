@@ -2,7 +2,7 @@ import com.sun.source.tree.DefaultCaseLabelTree;
 
 import java.util.Scanner;
 
-public class ExemploSwitch {
+public class exemploSwitch {
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Digite 1. Cadastro 2. Consulta 3. Sair")
