@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
+<<<<<<< HEAD
 public class Switch {
+=======
+public class exemploSwitch {
+>>>>>>> 5884f00a0618bd992e6006f741dfc99b4e479570
     public static void main(String[] args){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Digite 1. Cadastro 2. Consulta 3. Sair");
