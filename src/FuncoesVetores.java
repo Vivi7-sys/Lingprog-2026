@@ -120,6 +120,7 @@ public class FuncoesVetores {
         }
 
         System.out.print("\nVetor União: ");
+        // : percorre cada elemento da lista
         for (int num : vUniao) {
             System.out.print(num + " ");
         }

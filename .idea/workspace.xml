@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="161c6e98-bb0a-4d57-a1bd-40ef29e05213" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/For_Stonks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/While_Fibo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/While_Produto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Lingprog-2026/FuncoesVetores.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lingprog-2026/FuncoesVetores.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FuncoesVetores.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FuncoesVetores.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +45,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.For_Stonks.executor": "Run",
     "Application.Funcoes.executor": "Run",
     "Application.FuncoesVetores.executor": "Run",
     "Application.FunçõesVetores.executor": "Run",
     "Application.MatrizNotas.executor": "Run",
+    "Application.VetorSubs.executor": "Run",
+    "Application.WhileIdades.executor": "Run",
+    "Application.WhileLogin.executor": "Run",
+    "Application.While_Fatorial.executor": "Run",
+    "Application.While_Fibo.executor": "Run",
+    "Application.While_Produto.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
