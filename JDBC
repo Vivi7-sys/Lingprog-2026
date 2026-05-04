@@ -1,0 +1,38 @@
+import java.sql.*;
+
+public class Main {
+    public static void criarTabela(Connection conn) throws SQLException {
+        String sql = "CREATE TABLE IF NOT EXISTS produtos (" + "id SERIAL PRIMARY KEY, " + "nome TEXT NOT NULL, " + "preço REAL NOT NULL, " + "estoque INTEGER DEFAULT 0)";
+        // CRIA OBJETO DEINSTRUÇÃO SQL
+        Statement stmt = conn.createStatement();
+        stmt.execute(sql); // executa comando SQL
+        System.out.println("Criou tabela");
+        stmt.close(); // fecha instrução SQL
+    }
+    public static void inserirProduto(Connection conn, String nome, double preco, int estoque)
+                throws SQLException {
+            // cria SQL
+            String sql = "INSERT INTO products (nome, preco, estoque) VALUES (?, ?, ?)";
+            // prepara uma instrução SQL
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, nome);// define o nome do produto
+            ps.setDouble(2, preco);// define o preço do produto
+            ps.setInt(3, estoque); // define estoque do produto
+            ps.executeUpdate(); // executa o SQL
+            ps.close();
+    }
+
+    public static void main(String[] args) {
+        String url = "jdbc:postgresql://localhost:5432/savegnago";
+        try { // tenta se conectar ao banco de dados
+            Connection conn = DriverManager.getConnection(url, "postgres", "fatec123*");
+            System.out.println("Conectado com sucesso!");
+            criarTabela(conn);
+            inserirProduto(conn, "mouse", 149, 3);
+
+        } catch (SQLException e) { // caso de erro, envia pra cá
+            System.out.println("Erro ao conectar com o banco de dados " + e.getMessage());
+
+        }
+    }
+}
