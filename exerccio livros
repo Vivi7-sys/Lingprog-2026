@@ -1,0 +1,35 @@
+import java.sql.*;
+
+public class exercicio_Produtos {
+    public static void exercicio_Produtos(Connection conn) throws SQLException{
+        String sql = "CREATE TABLE IF NOT EXISTS produtos (" + "id SERIAL PRIMARY KEY, " + "nome TEXT NOT NULL, " + "preço REAL NOT NULL, " + "estoque INTEGER DEFAULT 0)";
+        Statement stmt = conn.createStatement();
+        stmt.execute(sql); // executa comando SQL
+        System.out.println("Criou tabela");
+        stmt.close(); // fecha instrução SQL
+    }
+    public static void Livros(Connection conn, String titulo, String autor, int ano, int disponivel)
+            throws SQLException {
+        // cria SQL
+        String sql = "INSERT INTO products (titulo, autor, ano, disponivel) VALUES (?, ?, ?, ?)";
+        // prepara uma instrução SQL
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, titulo);// define o titulo do livro
+        ps.setString(2, autor);// define o autor do livro
+        ps.setInt(3, ano); // define o ano do livro
+        ps.setInt(4, disponivel); // define se o livro esta disponivel
+        ps.executeUpdate(); // executa o SQL
+        ps.close();
+    }
+    public static void main (String[] args){
+        try (Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/exercicio_Produtos", "postgres",
+                "fatec123*")) {
+
+        exercicio_Produtos(conn);
+
+        } catch (SQLException e) {
+            System.out.println("Erro no banco: " + e.getMessage());
+        }
+    }
+
+}
