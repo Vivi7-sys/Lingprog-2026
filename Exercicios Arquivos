@@ -19,16 +19,16 @@ public class GerenciadorArquivos {
      * Exercício 1 — Verificando e Criando um Arquivo
      */
     public static void exercicio01() {
-        File f = new File("recados.txt"); [cite: 9, 19]
+        File f = new File("recados.txt"); 
 
         try {
-            if (!f.exists()) { [cite: 10, 19]
-                f.createNewFile(); [cite: 10, 17, 19]
-                System.out.println("Arquivo criado com sucesso!"); [cite: 10, 13]
+            if (!f.exists()) { 
+                f.createNewFile();
+                System.out.println("Arquivo criado com sucesso!"); 
             } else {
-                System.out.printf("Arquivo: %s, Tamanho: %d bytes\n", f.getName(), f.length()); [cite: 11, 15, 19]
+                System.out.printf("Arquivo: %s, Tamanho: %d bytes\n", f.getName(), f.length()); 
             }
-        } catch (IOException e) { [cite: 18]
+        } catch (IOException e) { 
             System.out.println("Erro ao manipular o arquivo: " + e.getMessage());
         }
     }
@@ -37,13 +37,12 @@ public class GerenciadorArquivos {
      * Exercício 2 — Escrevendo e Lendo uma Lista de Compras
      */
     public static void exercicio02() {
-        String[] itens = {"Arroz", "Feijão", "Macarrão", "Óleo", "Sal"}; [cite: 22]
-        File arquivo = new File("compras.txt"); [cite: 22]
-
+        String[] itens = {"Arroz", "Feijão", "Macarrão", "Óleo", "Sal"}; 
+        File arquivo = new File("compras.txt"); 
         // Escrita no arquivo
-        try (PrintWriter writer = new PrintWriter(new FileWriter(arquivo))) { [cite: 28, 29]
+        try (PrintWriter writer = new PrintWriter(new FileWriter(arquivo))) { 
             for (String item : itens) {
-                writer.println(item); [cite: 29]
+                writer.println(item);
             }
         } catch (IOException e) {
             System.out.println("Erro ao escrever no arquivo: " + e.getMessage());
@@ -51,12 +50,12 @@ public class GerenciadorArquivos {
         }
 
         // Leitura do arquivo
-        try (Scanner leitor = new Scanner(arquivo)) { [cite: 30]
-            int contador = 1; [cite: 31]
+        try (Scanner leitor = new Scanner(arquivo)) { 
+            int contador = 1; 
             while (leitor.hasNextLine()) {
-                String item = leitor.nextLine(); [cite: 30]
-                System.out.printf("%d. %s\n", contador, item); [cite: 23]
-                contador++; [cite: 31]
+                String item = leitor.nextLine(); 
+                System.out.printf("%d. %s\n", contador, item); 
+                contador++;
             }
         } catch (FileNotFoundException e) {
             System.out.println("Arquivo não encontrado para leitura.");
@@ -73,26 +72,26 @@ public class GerenciadorArquivos {
      * Exercício 3 — Diário Pessoal com Modo Append
      */
     public static void exercicio03() {
-        Scanner teclado = new Scanner(System.in); [cite: 42]
-        System.out.print("Digite sua anotação: "); [cite: 36, 38]
-        String anotacao = teclado.nextLine(); [cite: 36, 42]
+        Scanner teclado = new Scanner(System.in); 
+        System.out.print("Digite sua anotação: "); 
+        String anotacao = teclado.nextLine(); 
 
         // Formatador para a data igual ao exemplo: "seg 12/05 09:14"
         SimpleDateFormat sdf = new SimpleDateFormat("E dd/MM HH:mm");
-        String dataFormatada = sdf.format(new Date()); [cite: 36, 41]
+        String dataFormatada = sdf.format(new Date()); 
 
         // Escrita com append (true)
-        try (PrintWriter writer = new PrintWriter(new FileWriter("diario.txt", true))) { [cite: 35, 40, 44]
-            writer.println(dataFormatada + " | " + anotacao); [cite: 36, 38]
+        try (PrintWriter writer = new PrintWriter(new FileWriter("diario.txt", true))) { 
+            writer.println(dataFormatada + " | " + anotacao); 
         } catch (IOException e) {
             System.out.println("Erro ao salvar no diário: " + e.getMessage());
         }
 
         // Leitura completa do arquivo
-        System.out.println("\n=== Diário ==="); [cite: 36, 38]
+        System.out.println("\n=== Diário ==="); 
         try (BufferedReader reader = new BufferedReader(new FileReader("diario.txt"))) { [cite: 43]
             String linha;
-            while ((linha = reader.readLine()) != null) { [cite: 43]
+            while ((linha = reader.readLine()) != null) { 
                 System.out.println(linha);
             }
         } catch (FileNotFoundException e) {
@@ -106,12 +105,12 @@ public class GerenciadorArquivos {
      * Exercício 4 — Relatório de Notas com PrintWriter
      */
     public static void exercicio04() {
-        gravarNotas(); [cite: 47]
-        gerarRelatorio(); [cite: 47]
+        gravarNotas(); 
+        gerarRelatorio(); 
     }
 
-    private static void gravarNotas() { [cite: 47]
-        String[] dados = { [cite: 48, 51]
+    private static void gravarNotas() { 
+        String[] dados = {
             "Ana,8.5",
             "Bruno,6.0",
             "Carla,9.2",
@@ -119,7 +118,7 @@ public class GerenciadorArquivos {
             "Elena,5.8"
         };
 
-        try (PrintWriter writer = new PrintWriter(new FileWriter("notas.txt"))) { [cite: 48, 55]
+        try (PrintWriter writer = new PrintWriter(new FileWriter("notas.txt"))) { 
             for (String linha : dados) {
                 writer.println(linha);
             }
@@ -128,21 +127,21 @@ public class GerenciadorArquivos {
         }
     }
 
-    private static void gerarRelatorio() { [cite: 47]
+    private static void gerarRelatorio() { 
         // Listas auxiliares para armazenar os dados lidos antes do cálculo da média geral
-        ArrayList<String> nomes = new ArrayList<>(); [cite: 59]
-        ArrayList<Double> notas = new ArrayList<>(); [cite: 59]
+        ArrayList<String> nomes = new ArrayList<>();
+        ArrayList<Double> notas = new ArrayList<>();
         double somaNotas = 0;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("notas.txt"))) { [cite: 49, 56]
+        try (BufferedReader reader = new BufferedReader(new FileReader("notas.txt"))) { 
             String linha;
-            while ((linha = reader.readLine()) != null) { [cite: 56]
-                String[] partes = linha.split(","); [cite: 56]
+            while ((linha = reader.readLine()) != null) { 
+                String[] partes = linha.split(","); 
                 if (partes.length == 2) {
                     String nome = partes[0].trim();
                     double nota = Double.parseDouble(partes[1].trim());
-                    nomes.add(nome); [cite: 59]
-                    notas.add(nota); [cite: 59]
+                    nomes.add(nome); 
+                    notas.add(nota);
                     somaNotas += nota;
                 }
             }
@@ -156,20 +155,20 @@ public class GerenciadorArquivos {
         double mediaTurma = somaNotas / nomes.size();
 
         // Escrevendo o relatório formatado
-        try (PrintWriter writer = new PrintWriter(new FileWriter("relatorio.txt"))) { [cite: 49, 52]
-            writer.println("=== Relatório de Notas ==="); [cite: 53]
+        try (PrintWriter writer = new PrintWriter(new FileWriter("relatorio.txt"))) { 
+            writer.println("=== Relatório de Notas ==="); 
             writer.println();
-            writer.printf("%-15s%-7s%s\n", "Nome", "Nota", "Situação"); [cite: 53, 58]
+            writer.printf("%-15s%-7s%s\n", "Nome", "Nota", "Situação"); 
 
             for (int i = 0; i < nomes.size(); i++) {
                 String nome = nomes.get(i);
                 double nota = notas.get(i);
-                String situacao = (nota >= 6.0) ? "Aprovado" : "Reprovado"; [cite: 57]
-                writer.printf("%-15s%-7.1f%s\n", nome, nota, situacao); [cite: 53, 58]
+                String situacao = (nota >= 6.0) ? "Aprovado" : "Reprovado"; 
+                writer.printf("%-15s%-7.1f%s\n", nome, nota, situacao);
             }
 
             writer.println();
-            writer.printf("Média da turma: %.1f\n", mediaTurma); [cite: 53, 58]
+            writer.printf("Média da turma: %.1f\n", mediaTurma); 
             System.out.println("Relatório 'relatorio.txt' gerado com sucesso!");
         } catch (IOException e) {
             System.out.println("Erro ao gerar arquivo de relatório: " + e.getMessage());
@@ -184,44 +183,44 @@ public class GerenciadorArquivos {
      * Exercício 5 — Agenda de Contatos com CRUD em Arquivo
      */
     public static void exercicio05() {
-        Scanner sc = new Scanner(System.in); [cite: 75]
+        Scanner sc = new Scanner(System.in);
         int opcao;
 
         do {
-            System.out.println("\n=== Agenda de Contatos ==="); [cite: 66, 67]
-            System.out.println("1. Listar contatos"); [cite: 67]
-            System.out.println("2. Inserir contato"); [cite: 67]
-            System.out.println("3. Buscar por nome"); [cite: 67]
-            System.out.println("4. Remover por ID"); [cite: 67]
-            System.out.println("0. Sair"); [cite: 67]
-            System.out.print("Opção: "); [cite: 67]
+            System.out.println("\n=== Agenda de Contatos ==="); 
+            System.out.println("1. Listar contatos"); 
+            System.out.println("2. Inserir contato"); 
+            System.out.println("3. Buscar por nome"); 
+            System.out.println("4. Remover por ID"); 
+            System.out.println("0. Sair"); 
+            System.out.print("Opção: "); 
             opcao = sc.nextInt();
             sc.nextLine(); // Limpa o buffer
 
             switch (opcao) {
-                case 1 -> listarContatos(); [cite: 65]
-                case 2 -> inserirContato(sc); [cite: 65, 75]
-                case 3 -> buscarPorNome(sc); [cite: 65, 75]
-                case 4 -> removerPorId(sc); [cite: 65, 75]
-                case 0 -> System.out.println("Saindo do sistema..."); [cite: 67]
+                case 1 -> listarContatos(); 
+                case 2 -> inserirContato(sc); 
+                case 3 -> buscarPorNome(sc); 
+                case 4 -> removerPorId(sc); 
+                case 0 -> System.out.println("Saindo do sistema..."); 
                 default -> System.out.println("Opção inválida!");
             }
         } while (opcao != 0);
     }
 
     private static void listarContatos() {
-        File arquivo = new File("agenda.csv"); [cite: 63]
+        File arquivo = new File("agenda.csv"); 
         if (!arquivo.exists()) {
             System.out.println("Nenhum contato cadastrado ainda.");
             return;
         }
 
-        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) { [cite: 71]
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) { 
             String linha;
             System.out.printf("\n%-4s | %-15s | %-12s | %s\n", "ID", "Nome", "Telefone", "Email");
             System.out.println("---------------------------------------------------------");
-            while ((linha = br.readLine()) != null) { [cite: 71]
-                String[] dados = linha.split(","); [cite: 64]
+            while ((linha = br.readLine()) != null) { 
+                String[] dados = linha.split(","); 
                 if (dados.length == 4) {
                     System.out.printf("%-4s | %-15s | %-12s | %s\n", dados[0], dados[1], dados[2], dados[3]); [cite: 71]
                 }
@@ -231,25 +230,25 @@ public class GerenciadorArquivos {
         }
     }
 
-    private static void inserirContato(Scanner sc) { [cite: 75]
-        int proximoId = 1; [cite: 72]
-        File arquivo = new File("agenda.csv"); [cite: 63]
+    private static void inserirContato(Scanner sc) { 
+        int proximoId = 1; 
+        File arquivo = new File("agenda.csv"); 
 
         // Descobre o maior ID para autoincremento
         if (arquivo.exists()) {
             try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
                 String linha;
-                int maiorId = 0; [cite: 78]
-                while ((linha = br.readLine()) != null) { [cite: 78]
-                    String[] dados = linha.split(","); [cite: 64]
+                int maiorId = 0; 
+                while ((linha = br.readLine()) != null) { 
+                    String[] dados = linha.split(","); 
                     if (dados.length > 0) {
                         int idAtual = Integer.parseInt(dados[0]);
-                        if (idAtual > maiorId) { [cite: 78]
+                        if (idAtual > maiorId) { 
                             maiorId = idAtual;
                         }
                     }
                 }
-                proximoId = maiorId + 1; [cite: 72, 78]
+                proximoId = maiorId + 1; 
             } catch (IOException | NumberFormatException e) {
                 System.out.println("Erro ao calcular ID: " + e.getMessage());
             }
@@ -263,25 +262,25 @@ public class GerenciadorArquivos {
         String email = sc.nextLine();
 
         // Salva concatenando usando Append
-        try (PrintWriter pw = new PrintWriter(new FileWriter(arquivo, true))) { [cite: 72]
-            pw.printf("%d,%s,%s,%s\n", proximoId, nome, telefone, email); [cite: 64]
+        try (PrintWriter pw = new PrintWriter(new FileWriter(arquivo, true))) { 
+            pw.printf("%d,%s,%s,%s\n", proximoId, nome, telefone, email); 
             System.out.println("Contato inserido com sucesso!");
         } catch (IOException e) {
             System.out.println("Erro ao salvar contato: " + e.getMessage());
         }
     }
 
-    private static void buscarPorNome(Scanner sc) { [cite: 75]
+    private static void buscarPorNome(Scanner sc) { 
         System.out.print("Digite o nome ou parte dele para buscar: ");
         String busca = sc.nextLine().trim();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("agenda.csv"))) { [cite: 73]
+        try (BufferedReader br = new BufferedReader(new FileReader("agenda.csv"))) { 
             String linha;
             boolean encontrado = false;
-            while ((linha = br.readLine()) != null) { [cite: 73]
-                String[] dados = linha.split(","); [cite: 64]
+            while ((linha = br.readLine()) != null) { 
+                String[] dados = linha.split(","); 
                 // Ignora Case e valida se o nome contém o termo buscado
-                if (dados.length == 4 && dados[1].toLowerCase().contains(busca.toLowerCase())) { [cite: 73]
+                if (dados.length == 4 && dados[1].toLowerCase().contains(busca.toLowerCase())) { 
                     System.out.printf("ID: %s | Nome: %s | Tel: %s | Email: %s\n", dados[0], dados[1], dados[2], dados[3]);
                     encontrado = true;
                 }
@@ -294,25 +293,25 @@ public class GerenciadorArquivos {
         }
     }
 
-    private static void removerPorId(Scanner sc) { [cite: 74, 75]
+    private static void removerPorId(Scanner sc) { 
         System.out.print("Digite o ID do contato para remover: ");
         String idParaRemover = sc.nextLine().trim();
 
-        File arquivo = new File("agenda.csv"); [cite: 63]
+        File arquivo = new File("agenda.csv"); 
         if (!arquivo.exists()) return;
 
-        ArrayList<String> linhasManter = new ArrayList<>(); [cite: 77]
+        ArrayList<String> linhasManter = new ArrayList<>(); 
         boolean excluido = false;
 
         // Passada 1: Lê tudo para a memória filtrando o ID
-        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) { [cite: 74]
+        try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             while ((linha = br.readLine()) != null) { [cite: 74]
                 String[] dados = linha.split(","); [cite: 64]
-                if (dados.length > 0 && dados[0].trim().equals(idParaRemover)) { [cite: 74]
-                    excluido = true; // Ignora a linha (remove) [cite: 77]
+                if (dados.length > 0 && dados[0].trim().equals(idParaRemover)) { 
+                    excluido = true; // Ignora a linha (remove) 
                 } else {
-                    linhasManter.add(linha); [cite: 77]
+                    linhasManter.add(linha);
                 }
             }
         } catch (IOException e) {
@@ -321,9 +320,9 @@ public class GerenciadorArquivos {
         }
 
         // Passada 2: Sobrescreve sem append com o vetor filtrado
-        try (PrintWriter pw = new PrintWriter(new FileWriter(arquivo, false))) { [cite: 74, 77]
+        try (PrintWriter pw = new PrintWriter(new FileWriter(arquivo, false))) { 
             for (String l : linhasManter) {
-                pw.println(l); [cite: 77]
+                pw.println(l); 
             }
             if (excluido) {
                 System.out.println("Contato removido com sucesso!");
@@ -350,11 +349,11 @@ public class GerenciadorArquivos {
             this.n1 = n1;
             this.n2 = n2;
             this.n3 = n3;
-            this.media = (n1 + n2 + n3) / 3.0; [cite: 81, 94]
+            this.media = (n1 + n2 + n3) / 3.0; 
             
-            if (this.media >= 7.0) this.situacao = "Aprovado"; [cite: 85]
-            else if (this.media >= 5.0) this.situacao = "Recuperação"; [cite: 86]
-            else this.situacao = "Reprovado"; [cite: 87]
+            if (this.media >= 7.0) this.situacao = "Aprovado"; 
+            else if (this.media >= 5.0) this.situacao = "Recuperação"; 
+            else this.situacao = "Reprovado"; 
         }
     }
 
@@ -363,21 +362,20 @@ public class GerenciadorArquivos {
      */
     public static void exercicio06() {
         // Criar um alunos.csv inicial de simulação caso não exista
-        inicializarCsvAlunos(); [cite: 82]
-
-        ArrayList<Aluno> turma = new ArrayList<>(); [cite: 98]
+        inicializarCsvAlunos();
+        ArrayList<Aluno> turma = new ArrayList<>(); 
 
         // 1. Lendo dados do arquivo CSV de entrada
-        try (BufferedReader br = new BufferedReader(new FileReader("alunos.csv"))) { [cite: 82, 93]
+        try (BufferedReader br = new BufferedReader(new FileReader("alunos.csv"))) { 
             String linha;
-            while ((linha = br.readLine()) != null) { [cite: 93]
-                String[] partes = linha.split(","); [cite: 83, 93]
+            while ((linha = br.readLine()) != null) { 
+                String[] partes = linha.split(","); 
                 if (partes.length == 4) {
                     String nome = partes[0].trim();
                     double n1 = Double.parseDouble(partes[1].trim());
                     double n2 = Double.parseDouble(partes[2].trim());
                     double n3 = Double.parseDouble(partes[3].trim());
-                    turma.add(new Aluno(nome, n1, n2, n3)); [cite: 94, 98]
+                    turma.add(new Aluno(nome, n1, n2, n3)); 
                 }
             }
         } catch (IOException e) {
@@ -388,60 +386,59 @@ public class GerenciadorArquivos {
         if (turma.isEmpty()) return;
 
         // Variaveis estatísticas
-        int aprovados = 0, recuperacao = 0, reprovados = 0; [cite: 97]
-        double somaGeral = 0; [cite: 97]
-        Aluno maiorMedia = turma.get(0); [cite: 97]
-        Aluno menorMedia = turma.get(0); [cite: 97]
+        int aprovados = 0, recuperacao = 0, reprovados = 0; 
+        double somaGeral = 0; 
+        Aluno maiorMedia = turma.get(0); 
+        Aluno menorMedia = turma.get(0); 
 
         // 2. Gravando o arquivo aprovados.csv e calculando métricas
-        try (PrintWriter pwAprovados = new PrintWriter(new FileWriter("aprovados.csv"))) { [cite: 81, 95]
+        try (PrintWriter pwAprovados = new PrintWriter(new FileWriter("aprovados.csv"))) { 
             for (Aluno a : turma) {
                 somaGeral += a.media;
 
                 // Contadores de situação
                 if (a.situacao.equals("Aprovado")) { [cite: 85]
                     aprovados++; [cite: 97]
-                    pwAprovados.printf("%s,%.2f\n", a.nome, a.media); [cite: 89, 95]
-                } else if (a.situacao.equals("Recuperação")) { [cite: 86]
+                    pwAprovados.printf("%s,%.2f\n", a.nome, a.media); 
+                } else if (a.situacao.equals("Recuperação")) { 
                     recuperacao++; [cite: 97]
                 } else {
                     reprovados++; [cite: 97]
                 }
 
                 // Maior/Menor Nota
-                if (a.media > maiorMedia.media) maiorMedia = a; [cite: 97]
-                if (a.media < menorMedia.media) menorMedia = a; [cite: 97]
+                if (a.media > maiorMedia.media) maiorMedia = a; 
+                if (a.media < menorMedia.media) menorMedia = a; 
             }
         } catch (IOException e) {
             System.out.println("Erro ao gerar aprovados.csv: " + e.getMessage());
         }
 
-        double mediaGeral = somaGeral / turma.size(); [cite: 97]
+        double mediaGeral = somaGeral / turma.size(); 
 
         // 3. Gravando o arquivo relatorio_final.txt formatado
-        try (PrintWriter pwRelatorio = new PrintWriter(new FileWriter("relatorio_final.txt"))) { [cite: 81, 96]
-            pwRelatorio.println("========================================"); [cite: 91]
-            pwRelatorio.println("       RELATÓRIO FINAL DA TURMA         "); [cite: 91]
-            pwRelatorio.println("========================================"); [cite: 91]
+        try (PrintWriter pwRelatorio = new PrintWriter(new FileWriter("relatorio_final.txt"))) { 
+            pwRelatorio.println("========================================");
+            pwRelatorio.println("       RELATÓRIO FINAL DA TURMA         "); 
+            pwRelatorio.println("========================================"); 
             pwRelatorio.println();
-            pwRelatorio.printf("%-15s%-8s%s\n", "Nome", "Media", "Situação"); [cite: 91, 96]
+            pwRelatorio.printf("%-15s%-8s%s\n", "Nome", "Media", "Situação"); 
 
             for (Aluno a : turma) {
-                pwRelatorio.printf("%-15s%-8.2f%s\n", a.nome, a.media, a.situacao); [cite: 91, 96]
+                pwRelatorio.printf("%-15s%-8.2f%s\n", a.nome, a.media, a.situacao); 
             }
 
             pwRelatorio.println();
-            pwRelatorio.println("----------------------------------------"); [cite: 91]
-            pwRelatorio.printf("Total de alunos    : %d\n", turma.size()); [cite: 91, 97]
-            pwRelatorio.printf("Aprovados          : %d\n", aprovados); [cite: 91, 97]
-            pwRelatorio.printf("Em recuperação     : %d\n", recuperacao); [cite: 91, 97]
-            pwRelatorio.printf("Reprovados         : %d\n", reprovados); [cite: 91, 97]
-            pwRelatorio.printf("Média geral        : %.2f\n", mediaGeral); [cite: 91, 97]
-            pwRelatorio.printf("Maior média        : %.2f (%s)\n", maiorMedia.media, maiorMedia.nome); [cite: 91, 97]
-            pwRelatorio.printf("Menor média        : %.2f (%s)\n", menorMedia.media, menorMedia.nome); [cite: 91, 97]
-            pwRelatorio.println("========================================"); [cite: 91]
-
-            System.out.println("Processamento concluído. 'aprovados.csv' e 'relatorio_final.txt' gerados!"); [cite: 81]
+            pwRelatorio.println("----------------------------------------"); 
+            pwRelatorio.printf("Total de alunos    : %d\n", turma.size()); 
+            pwRelatorio.printf("Aprovados          : %d\n", aprovados); 
+            pwRelatorio.printf("Em recuperação     : %d\n", recuperacao); 
+            pwRelatorio.printf("Reprovados         : %d\n", reprovados); 
+            pwRelatorio.printf("Média geral        : %.2f\n", mediaGeral); 
+            pwRelatorio.printf("Maior média        : %.2f (%s)\n", maiorMedia.media, maiorMedia.nome); 
+            pwRelatorio.printf("Menor média        : %.2f (%s)\n", menorMedia.media, menorMedia.nome); 
+            pwRelatorio.println("========================================"); 
+            System.out.println("Processamento concluído. 'aprovados.csv' e 'relatorio_final.txt' gerados!"); 
         } catch (IOException e) {
             System.out.println("Erro ao gerar relatorio_final.txt: " + e.getMessage());
         }
@@ -449,15 +446,15 @@ public class GerenciadorArquivos {
 
     // Função de apoio para gerar a entrada mock do Exercício 6 de forma automatizada
     private static void inicializarCsvAlunos() {
-        File f = new File("alunos.csv"); [cite: 82]
+        File f = new File("alunos.csv"); 
         if (!f.exists()) {
             try (PrintWriter pw = new PrintWriter(new FileWriter(f))) {
-                pw.println("Ana,8.0,7.5,9.0"); [cite: 83]
-                pw.println("Bruno,4.5,5.0,4.0"); [cite: 83]
-                pw.println("Carla,7.0,6.5,8.0"); [cite: 83]
-                pw.println("Daniel,5.5,6.0,5.8"); [cite: 83]
-                pw.println("Elena,9.5,9.0,10.0"); [cite: 83]
-                pw.println("Felipe,3.0,4.5,3.5"); [cite: 83]
+                pw.println("Ana,8.0,7.5,9.0"); 
+                pw.println("Bruno,4.5,5.0,4.0"); 
+                pw.println("Carla,7.0,6.5,8.0"); 
+                pw.println("Daniel,5.5,6.0,5.8"); 
+                pw.println("Elena,9.5,9.0,10.0"); 
+                pw.println("Felipe,3.0,4.5,3.5"); 
             } catch (IOException e) {
                 System.out.println("Não foi possível pré-configurar o arquivo de alunos de teste.");
             }
